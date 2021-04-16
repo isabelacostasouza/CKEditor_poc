@@ -1,0 +1,74 @@
+body {
+    padding: 5%;
+}
+label {
+    width: 400px;
+    margin-right: 10px;
+    font-weight: 600;
+    font-family: arial;
+}
+textarea {
+    margin-bottom: -50px;
+}
+h1 {
+    font-family: arial;
+    margin-top: 0px;
+}
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-weight: 600;
+}
+h4 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-weight: 400;
+}
+button {
+    margin-top: 20px;
+    width: 200px;
+    height: 35px;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: #bfbcbc;
+    cursor: pointer;
+}
+.atribute {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#ckeditorContainer, #generatedForm, #generatedFormResponses {
+    margin-top: 30px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: lightgrey;
+    color: #4c4c4c;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 102%;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.titleH2 {
+    font-family: Arial;
+    padding-bottom: 10px;
+    margin-top: 0px;
+}
