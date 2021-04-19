@@ -8,17 +8,18 @@ label {
     font-family: arial;
 }
 textarea {
-    margin-bottom: -50px;
+    margin-bottom: -10px;
 }
 h1 {
     font-family: arial;
     margin-top: 0px;
 }
-h2 {
+h2, h3 {
     margin-top: 10px;
     margin-bottom: 10px;
     font-family: monospace;
     font-weight: 600;
+    font-size: 20px;
 }
 h4 {
     margin-top: 0px;

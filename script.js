@@ -11,8 +11,7 @@ window.onload = (event) => {
             heading: {
                 options: [
                     { model: 'atributo-inteiro', view: { name: 'h2', classes: 'atributeInteger' }, title: 'Atributo: Inteiro' },
-                    { model: 'atributo-textarea', view: { name: 'h2', classes: 'atributeTextarea' }, title: 'Atributo: Textarea' },
-                    { model: 'atributo-descricao', view: { name: 'h4', classes: 'atributeDescription' }, title: 'Descricao do Atributo'},
+                    { model: 'atributo-textarea', view: { name: 'h3', classes: 'atributeTextarea' }, title: 'Atributo: Textarea' },
                     { model: 'comentario', view: 'p', title: 'Comentário' }
                 ]
             }
@@ -25,28 +24,19 @@ window.onload = (event) => {
         } );
 
     document.querySelector( '#submit' ).addEventListener( 'click', () => {
+        generatedFormContainer.innerHTML = '<h2 class="titleH2">Formulario de preenchimento</h2>';
+
         const editorData = editor.getData();
-        let atributesArray = editorData.split('<h2 class=');
-        let finalContent = '<h2 class="titleH2">Formulario de preenchimento</h2>';
-        const atributesDict = {
-            atributeInteger: '<div class="atribute"> <label for="atributeInteger" class="inputLabel">*</label> <div class="tooltip"> <span class="tooltiptext">@</span> <input type="number" id="atributeInteger" class="formInput"> </div> </div>',
-            atributeTextarea: '<div class="atribute" style="margin-bottom: 30px;"> <label for="atributeTextarea" class="inputLabel">*</label> <div class="tooltip"> <span class="tooltiptext">@</span> <textarea type="number" id="atributeTextarea" class="formInput" rows="4" cols="50"> </textarea> </div> </div> <br>',
-        };
 
-        for(let i = 1; i < atributesArray.length; i++) {
-            label = atributesArray[i].split('</h2>')[0].split('>').reverse()[0];
-            description = atributesArray[i].split('</h2>')[1]
-            atribute = atributesDict[atributesArray[i].split('"')[1]].replace('*', label);
+        let finalContent = editorData.replaceAll('<h3 class="atributeTextarea">', '<div class="atribute" style="margin-bottom: 30px;"> <label for="atributeTextarea" class="inputLabel">');
+        finalContent = finalContent.replaceAll('<h2 class="atributeInteger">', '<div class="atribute"> <label for="atributeInteger" class="inputLabel">');
 
-            if(description.includes('atributeDescription')) atribute = atribute.replace('@', (description.split('atributeDescription">')[1].split('<')[0]));
-            else atribute = atribute.replace('<span class="tooltiptext">@</span>', '');
-
-            finalContent += atribute;
-        }
+        finalContent = finalContent.replaceAll('</h2>', '</label> <input type="number" id="atributeInteger" class="formInput"> </div>');
+        finalContent = finalContent.replaceAll('</h3>', '</label> <textarea type="number" id="atributeTextarea" class="formInput" rows="2" cols="50"> </textarea> </div>');
 
         finalContent += "<button id='submitForm'>Enviar</button>"
         
-        generatedFormContainer.innerHTML = finalContent;
+        generatedFormContainer.innerHTML += finalContent;
         generatedFormContainer.style.display = "block";
 
         document.querySelector( '#submitForm' ).addEventListener( 'click', () => {
